@@ -24,5 +24,5 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Auth::routes([
-    'register' => true
+    'register' => false
 ]);
