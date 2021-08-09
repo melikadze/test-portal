@@ -1,0 +1,1 @@
+<a href="{{ $url?? '/articles' }}"><button type="button" class="btn btn-secondary btn-sm">Go back</button></a>

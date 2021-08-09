@@ -1,0 +1,127 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Portal API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/v1/users/{email}/articles": {
+            "get": {
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Fetch all articles under user",
+                "description": "Return All articles",
+                "operationId": "fetchAllArticlesUnderUser",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "User email for identification",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "sort by multiple properties by separating them with a comma",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "textarea"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "You can specify multiple matching filter values by passing a comma separated list of values:",
+                        "required": false,
+                        "style": "deepObject",
+                        "explode": "true",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Resource Not Found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/articles/{article}": {
+            "get": {
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Fetch artcile details",
+                "description": "Return article details",
+                "operationId": "fetchSingleArticleDetails",
+                "parameters": [
+                    {
+                        "name": "article",
+                        "in": "path",
+                        "description": "article identification",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Resource Not Found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
